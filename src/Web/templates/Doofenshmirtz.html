@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel='stylesheet' href='{{ url_for("static", filename="stoile.css") }}'></link>
+<meta charset="UTF-8">
+<title>Succes !</title>
+</head>
+<body>
+   <center><div class="box"><h1>Vos scores sont :</h1></div></center>
+   {%for i in data %}
+   <center><div class="box"><h1>{{i}}</h1></div></center>
+   {%endfor%}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> RUNNER FRENZY</title>
+<link rel='stylesheet' href='{{ url_for("static", filename="style3.css") }}'></link>
+</head>
+<body>
+<h1><center>RUNNER FRENZY</center></h1>
+<h2>Bienvenue dans Runner Frenzy, un jeu arcade a obstacles developpe par Star Inc. Dans ce jeu vous controllez Gregoire, un courseur professionel avec un amour  <br>
+    fort pour les chats et la musique pop. Pendant une journee paisible dans sa maison a s'entrainer il entend parler a la television d'un marathon de  <br>
+    legende : le Iron Feet Tournament. Ahuri, il prend ses chaussures de sport et va participer a ce tournoi qui se deroule dans la foret, et il n'a pas l'intention de perdre. <br>
+    Traversez la foret avec Gregoire en evitant les obstacles divers, mais faites attention, Gregoire va de plus en plus vite car il veut gagner le tournoi a tout prix, meme ses jambes.
+</h2>
+
+<h2>Images du jeu :</h2>
+<center>
+    <img src = "{{ url_for('static', filename='CapJeu1.JPG')}}" width="700" height="400" />
+    <img src = "{{ url_for('static', filename='CapJeu2.JPG')}}" width="700" height="400" />
+</center>
+
+<a href="http://127.0.0.1:2000/scores"><center>Cliquez ici pour acceder aux scores !</center><br></a>
+<a href="http://127.0.0.1:2000/about"><center>About Us !</center></a>
+</body>

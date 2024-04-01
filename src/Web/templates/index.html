@@ -1,0 +1,37 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<title>Runner Frenzy Scoreboard &#128511;</title>
+<link rel='stylesheet' href='{{ url_for("static", filename="style.css") }}'></link>
+</head>
+<body>
+
+<center><h1 >Runner Frenzy Scoreboard &#128511;</h1> </center>
+<p >Bienvenue ! Ici vous retrouverez tous les scores des joueurs de Runner Frenzy.<br> Connectez vous pour retrouver votre score grâce au carré de connexion ci-dessous.</p>
+<form method="post" action="http://127.0.0.1:2000/connecte"><label for="fname" >Identifiant :</label><br>
+    <input type="text" id="fname" name="Id" ><br>
+    <label for="lname" >Mot de passe :</label><br>
+    <input type="text" id="lname" name="Mdp"><br><br>
+    <input type="submit" value="Se Connecter">
+</form>
+<table>
+<tr>
+   <th>Identifiant</th>
+   <th>Score</th>
+</tr>
+
+
+{% for valeur in data %}
+    <tr>    
+        <td>{{ valeur[0] }}</td>
+        <td>{{ valeur[1] }}</td>
+    </tr>
+{% endfor %}
+
+
+</table>
+</body>
+</html> 
+<body>
+    
+</body>

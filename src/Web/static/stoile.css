@@ -1,0 +1,19 @@
+html { 
+    background: url(d.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  h1{
+    color: gold;
+    text-decoration: underline;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+  .box {
+    width: 200px;
+    height: 100px;
+    border: 3px solid gold;
+    padding: 10px;
+    margin: 10px;
+  }
