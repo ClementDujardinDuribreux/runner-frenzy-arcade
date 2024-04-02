@@ -39,7 +39,9 @@ class Window:
                 self.scene.draw_items()
                 if self.scene.dead:
                     self.graphe_menu.change_scene('DeathMenu')
+            self.scene.change_selection()
             for event in pygame.event.get():
+                self.scene.change_selection(event)
                 self.scene.draw_items()
                 self.update_item(event)
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:

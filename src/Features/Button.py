@@ -13,9 +13,11 @@ class Button:
         self.display = display
         self.pos = pos[0], pos[0] + width_height[0], pos[1], pos[1] + width_height[1]
         self.widht_height = width_height
+        self.initial_colour = col
         self.colours = col, col2
+        self.selected = False
         self.text = Text(self.display, text, (0,0), 35 * (SCREENINFO.RES[0]/720))
-        self.sound = 'sounds/BUTTON SOUND.mp3'
+        self.sound = pygame.mixer.Sound('sounds/BUTTON SOUND.mp3')
         self.img = None
         self.decal = 9
         self.renvoi = renvoi
@@ -63,18 +65,28 @@ class Button:
     def update(self, event):
         self.draw()
         self.isClicked(event) 
-        if event.type == pygame.MOUSEBUTTONUP and event.button == 1 and self.clicked:                
+        if event.type == pygame.KEYUP and event.key == pygame.K_SPACE and self.clicked:
             self.clicked = False
             self.draw()
-            if pygame.mouse.get_pos()[0] > self.pos[0] and pygame.mouse.get_pos()[0] < self.pos[1] and pygame.mouse.get_pos()[1] > self.pos[2]-7 and pygame.mouse.get_pos()[1] < self.pos[3]-7:
-                time.sleep(0.15)
-                return self.renvoi
+            time.sleep(0.15)
+            return self.renvoi
 
     def isClicked(self, event):
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if pygame.mouse.get_pos()[0] > self.pos[0] and pygame.mouse.get_pos()[0] < self.pos[1] and pygame.mouse.get_pos()[1] > self.pos[2]-7 and pygame.mouse.get_pos()[1] < self.pos[3]-7:
-                if pygame.mouse.get_pressed(3)[0]:
-                    self.clicked = True
-                    sound_button = pygame.mixer.Sound(self.sound)
-                    sound_button.set_volume(1)
-                    sound_button.play()
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE and self.selected:
+            self.clicked = True
+            self.sound.play()
+
+    def on(self):
+        if not self.selected:
+            if self.colours[0][0] <= 255 - 200: col1 = self.colours[0][0] + 200
+            else: col1 = self.colours[0][0] + (200 - (self.colours[0][0] + 200)%255)
+            if self.colours[0][1] <= 255 - 200: col2 = self.colours[0][1] + 200
+            else: col2 = self.colours[0][1] + (200 - (self.colours[0][1] + 200)%255)
+            if self.colours[0][2] <= 255 - 200: col3 = self.colours[0][2] + 200
+            else: col3 = self.colours[0][2] + (200 - (self.colours[0][2] + 200)%255)
+            self.selected = True
+            self.colours = (col1, col2, col3), self.colours[1]
+
+    def reset_colour(self):
+        self.colours = self.initial_colour, self.colours[1]
+        self.selected = False

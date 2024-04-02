@@ -59,6 +59,8 @@ class GrapheMenu(Graphe):
             self.scene = self.dico_menu[self.pile_menu.depiler()]
             self.draw_PauseMenu = False
         elif retour_boutton is 'Restart':
+            self.scene.reset_select()
+            self.scene.update_selection()
             self.draw_PauseMenu = False
             self.scene.stop_music()
             self.scene = self.dico_menu['SceneMenu']
@@ -76,10 +78,13 @@ class GrapheMenu(Graphe):
         elif retour_boutton is 'Sound':
             OPTIONS.switch_sound()
             self.dico_menu['OptionMenu'].re_init()
+            self.dico_menu['OptionMenu'].select = 2
             if OPTIONS.SOUND_ON:
                 pygame.mixer.music.set_volume(0.05)
             else: pygame.mixer.music.set_volume(0.0)
         elif self.dico_menu[retour_boutton] in self.get_dico()[self.dico_menu[type(self.scene).__name__]]:
+            self.scene.reset_select()
+            self.scene.update_selection()
             if retour_boutton is 'MainMenu':
                 self.dico_menu['SceneMenu'].restart()
             if type(self.scene).__name__ is 'PauseMenu' and retour_boutton is 'SceneMenu':
@@ -91,6 +96,8 @@ class GrapheMenu(Graphe):
                 self.scene.stop_music()
 
     def pause_menu(self):
+        self.scene.reset_select()
+        self.scene.update_selection()
         if self.draw_PauseMenu:
             self.dico_menu['SceneMenu'].unpause()
             self.draw_PauseMenu = False

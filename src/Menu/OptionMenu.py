@@ -21,3 +21,5 @@ class OptionMenu(Menu):
         text_fullscreen_on_off = Text(self.display, '('+text +')', (SCREENINFO.RES[0]*0.72, SCREENINFO.RES[1]*0.26), SCREENINFO.RES[0]*0.05)
         self.item_list = [button_back, button_fullscreen, button_sound, text_fullscreen_on_off]
         self.set_backgroud('Map')
+        self.set_initial_select(1)
+        self.make_button_list()

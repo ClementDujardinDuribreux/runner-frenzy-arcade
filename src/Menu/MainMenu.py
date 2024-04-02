@@ -15,5 +15,7 @@ class MainMenu(Menu):
         button_connection = Button(self.display, (SCREENINFO.RES[0]*0.2, SCREENINFO.RES[1]*0.45), (SCREENINFO.RES[0]*0.6, SCREENINFO.RES[1]*0.15), (255,255,0), (0,0,0), 'CONNEXION', 'Connection', 'Internet')
         button_quit = Button(self.display, (SCREENINFO.RES[0]*0.2, SCREENINFO.RES[1]*0.70), (SCREENINFO.RES[0]*0.6, SCREENINFO.RES[1]*0.15), (255,255,0), (0,0,0), 'QUITTER', 'Quit', 'Quit')
         button_option = Button(self.display, (SCREENINFO.RES[0] - SCREENINFO.RES[0]*0.05 - 65*(SCREENINFO.RES[0]*0.001), SCREENINFO.RES[1]*0.05), (65*(SCREENINFO.RES[0]*0.0013), 60*(SCREENINFO.RES[1]*0.002)), (255,255,0), (0,0,0), '', 'OptionMenu', 'Gear')
-        self.item_list = [button_play, button_connection, button_quit, button_option]
+        self.item_list = [button_option, button_play, button_connection, button_quit]
+        self.set_initial_select(1)
         self.set_backgroud('Map')
+        self.make_button_list()
